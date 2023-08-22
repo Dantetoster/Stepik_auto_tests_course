@@ -1,0 +1,23 @@
+Создадим папку, где будут храниться наши виртуальные окружения, и перейдем в неё:
+
+mkdir environments
+cd environments
+
+Создадим виртуальное окружение:
+
+python -m venv selenium_env
+
+Запустим созданный для нас приложением venv файл activate.bat, чтобы активировать окружение:
+
+environments\selenium_env\Scripts\activate.bat
+
+
+Выполните следующие команды в командной строке Windows:
+
+c:\Users\Dante> mkdir selenium_course
+
+C:\Users\Dante> copy C:\Users\Dante\Downloads\first_script.py c:\Users\Dante\selenium_course
+
+C:\Users\Dante> environments\selenium_env\Scripts\activate.bat
+
+(selenium_env) C:\Users\user>python c:\Users\Dante\selenium_course\first_script.py

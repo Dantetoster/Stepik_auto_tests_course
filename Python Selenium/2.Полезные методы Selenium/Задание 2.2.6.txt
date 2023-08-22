@@ -1,0 +1,33 @@
+import math
+import time
+from selenium import webdriver
+from selenium.webdriver.common.by import By
+
+try:
+    # создаем экземпляр драйвера для автоматического управления браузером
+    browser = webdriver.Chrome()
+    # переходим на нужную страницу
+    browser.get("https://suninjuly.github.io/execute_script.html")
+    # считываем значение переменной x
+    x = int(browser.find_element(By.ID, "input_value").text)
+    # вычисляем значение функции от x
+    result = math.log(abs(12*math.sin(x)))
+    # скроллим страницу вниз
+    browser.execute_script("window.scrollBy(0, 100);")
+    # вводим результат в текстовое поле
+    input_field = browser.find_element(By.ID, "answer")
+    input_field.send_keys(str(result))
+    # отмечаем checkbox "I'm the robot"
+    checkbox = browser.find_element(By.ID, "robotCheckbox")
+    checkbox.click()
+    # выбираем radiobutton "Robots rule!"
+    radiobutton = browser.find_element(By.ID, "robotsRule")
+    browser.execute_script("return arguments[0].scrollIntoView(true);", radiobutton)
+    radiobutton.click()
+    # отправляем заполненную форму
+    submit_button = browser.find_element(By.XPATH, "//button[@type='submit']")
+    submit_button.click()
+finally:
+    # закрываем браузер после всех манипуляций
+    time.sleep(10)
+    browser.quit()
